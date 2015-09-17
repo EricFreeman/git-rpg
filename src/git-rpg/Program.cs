@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace git_rpg
@@ -20,39 +19,5 @@ namespace git_rpg
         {
             return args.Aggregate(string.Empty, (accumulator, current) => accumulator + current + " ").Trim();
         }
-    }
-
-    public class ModuleRunner
-    {
-        private readonly List<IModule> _modules;
-
-        public ModuleRunner()
-        {
-            _modules = new List<IModule>
-            {
-                new DefaultModule()
-            };
-        }
-
-        public void Execute(string input)
-        {
-            _modules.First(x => x.IsMatch(input)).Execute(input);
-        }
-    }
-
-    public class DefaultModule : IModule
-    {
-        public bool IsMatch(string input)
-        {
-            return true;
-        }
-
-        public void Execute(string input) { }
-    }
-
-    public interface IModule
-    {
-        bool IsMatch(string input);
-        void Execute(string input);
     }
 }
