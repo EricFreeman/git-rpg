@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandParser.cs" />
+    <Compile Include="Models\Command.cs" />
     <Compile Include="Modules\DefaultModule.cs" />
     <Compile Include="Modules\IModule.cs" />
     <Compile Include="ModuleRunner.cs" />
