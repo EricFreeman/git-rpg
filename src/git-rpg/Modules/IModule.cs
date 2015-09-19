@@ -4,7 +4,7 @@ namespace git_rpg.Modules
 {
     public interface IModule
     {
-        bool IsMatch(Command input);
-        void Execute(Command input);
+        bool IsMatch(Command command);
+        void Execute(Command command);
     }
 }

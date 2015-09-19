@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using git_rpg.Models;
 
 namespace git_rpg
@@ -7,8 +8,11 @@ namespace git_rpg
     {
         public Command Parse(string input)
         {
-            var commandParts = input.Split(' ').ToList();
+            input = input.Replace("git rpg ", string.Empty)
+                         .Replace("git ", string.Empty);
 
+            var commandParts = input.Split(' ').ToList();
+            commandParts.ForEach(Console.WriteLine);
             return new Command
             {
                 Action = commandParts[0],

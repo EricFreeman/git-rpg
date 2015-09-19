@@ -13,6 +13,7 @@ namespace git_rpg
         {
             _modules = new List<IModule>
             {
+                new GitModule(),
                 new DefaultModule()
             };
         }
