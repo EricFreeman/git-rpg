@@ -8,8 +8,7 @@ namespace git_rpg
     {
         static void Main(string[] args)
         {
-            var fileReader = new FileReader();
-            var input = fileReader.GetPreviousCommand();
+            var input = ParseCommand(args);
 
             var commandParser = new CommandParser();
             var command = commandParser.Parse(input);
@@ -22,6 +21,7 @@ namespace git_rpg
 
         private static string ParseCommand(string[] args)
         {
+            args = args.Select(x => $"\"{x}\"").ToArray();
             return args.Aggregate(string.Empty, (accumulator, current) => accumulator + current + " ").Trim();
         }
 
