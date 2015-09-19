@@ -13,7 +13,7 @@ namespace git_rpg.Modules
             var dictionaryLocation = Assembly.GetEntryAssembly().Location;
             var commands = File.ReadAllLines(dictionaryLocation.Replace("git-rpg.exe", "git dictionary.txt"));
 
-            return commands.Contains(command.Action);
+            return commands.Contains(command.Action.Replace("\"", ""));
         }
 
         public void Execute(Command command)

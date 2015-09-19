@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandParser.cs" />
+    <Compile Include="CommandRunner.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="Models\Command.cs" />
     <Compile Include="Modules\DefaultModule.cs" />
