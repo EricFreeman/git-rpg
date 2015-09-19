@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using git_rpg.Models;
 using git_rpg.Modules;
 
 namespace git_rpg
@@ -16,9 +17,9 @@ namespace git_rpg
             };
         }
 
-        public void Execute(string input)
+        public void Execute(Command command)
         {
-            _modules.First(x => x.IsMatch(input)).Execute(input);
+            _modules.First(x => x.IsMatch(command)).Execute(command);
         }
     }
 }

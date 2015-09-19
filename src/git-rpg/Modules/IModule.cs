@@ -1,8 +1,10 @@
+using git_rpg.Models;
+
 namespace git_rpg.Modules
 {
     public interface IModule
     {
-        bool IsMatch(string input);
-        void Execute(string input);
+        bool IsMatch(Command input);
+        void Execute(Command input);
     }
 }

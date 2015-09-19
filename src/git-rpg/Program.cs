@@ -9,8 +9,11 @@ namespace git_rpg
         {
             var input = ParseCommand(args);
 
+            var commandParser = new CommandParser();
+            var command = commandParser.Parse(input);
+
             var moduleRunner = new ModuleRunner();
-            moduleRunner.Execute(input);
+            moduleRunner.Execute(command);
 
             Console.WriteLine(input);
         }

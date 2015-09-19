@@ -1,12 +1,14 @@
-﻿namespace git_rpg.Modules
+﻿using git_rpg.Models;
+
+namespace git_rpg.Modules
 {
     public class DefaultModule : IModule
     {
-        public bool IsMatch(string input)
+        public bool IsMatch(Command input)
         {
             return true;
         }
 
-        public void Execute(string input) { }
+        public void Execute(Command input) { }
     }
 }
