@@ -17,7 +17,7 @@ namespace git_rpg
             var moduleRunner = new ModuleRunner();
             moduleRunner.Execute(command);
 
-            RunCommand(input);
+            RunCommand(command.ToString());
         }
 
         private static string ParseCommand(string[] args)

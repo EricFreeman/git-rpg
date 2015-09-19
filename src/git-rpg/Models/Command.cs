@@ -4,5 +4,10 @@
     {
         public string Action { get; set; }
         public string Arguments { get; set; }
+
+        public override string ToString()
+        {
+            return "git " + Action + " " + Arguments;
+        }
     }
 }
