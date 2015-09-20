@@ -12,21 +12,14 @@ namespace git_rpg
         {
             var args = RemoveExtraCommands();
 
-            var input = args
-                .Select(x => $"\"{x}\"")
-                .Aggregate(string.Empty, (accumulator, current) => accumulator + current + " ")
-                .Trim();
-
-            var commandParts = input.Split(' ').ToList();
-
             return new Command
             {
-                Action = commandParts[0],
-                Arguments = string.Join(" ", commandParts.GetRange(1, commandParts.Count - 1))
+                Action = args[0],
+                Arguments = string.Join(" ", args.GetRange(1, args.Count - 1))
             };
         }
 
-        private string[] RemoveExtraCommands()
+        private List<string> RemoveExtraCommands()
         {
             var argsNoExecutable =
                 Regex.Replace(Environment.CommandLine, "(\"?.*\\.exe\"?\\s)", string.Empty)
@@ -37,7 +30,7 @@ namespace git_rpg
             var commandsToRemove = new List<string> { "git", "rpg", "git-rpg" };
             commandsToRemove.ForEach(x => temporaryList.Remove(x));
 
-            return temporaryList.ToArray();
+            return temporaryList;
         }
     }
 }
