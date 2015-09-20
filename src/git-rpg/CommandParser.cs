@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using git_rpg.Models;
 
 namespace git_rpg
 {
     public class CommandParser
     {
-        public Command Parse(string[] args)
+        public Command Parse()
         {
-            args = RemoveExtraCommands(args);
+            var args = RemoveExtraCommands();
 
             var input = args
                 .Select(x => $"\"{x}\"")
@@ -24,9 +26,14 @@ namespace git_rpg
             };
         }
 
-        private string[] RemoveExtraCommands(string[] args)
+        private string[] RemoveExtraCommands()
         {
-            var temporaryList = args.ToList();
+            var argsNoExecutable =
+                Regex.Replace(Environment.CommandLine, "(\"?.*\\.exe\"?\\s)", string.Empty)
+                     .Split(' ');
+
+            var temporaryList = argsNoExecutable.ToList();
+            temporaryList.RemoveAt(0); // remove executable location
             var commandsToRemove = new List<string> { "git", "rpg", "git-rpg" };
             commandsToRemove.ForEach(x => temporaryList.Remove(x));
 

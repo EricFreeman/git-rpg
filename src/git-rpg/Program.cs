@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             var commandParser = new CommandParser();
-            var command = commandParser.Parse(args);
+            var command = commandParser.Parse();
 
             var moduleRunner = new ModuleRunner();
             moduleRunner.Execute(command);
